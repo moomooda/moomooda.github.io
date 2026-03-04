@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>生日快乐，我的宝贝 ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "微软雅黑", "PingFang SC", sans-serif;
+      background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+      color: #fff;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    p {
+      font-size: 1.4rem;
+      max-width: 600px;
+      line-height: 1.6;
+      margin: 0 auto 30px;
+    }
+
+    .heart {
+      font-size: 3rem;
+      animation: heartbeat 1.2s infinite;
+    }
+
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      14% { transform: scale(1.15); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.15); }
+      70% { transform: scale(1); }
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    /* 音乐控制按钮样式 */
+    #playBtn {
+      background: rgba(255, 255, 255, 0.3);
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+      margin-top: 20px;
+    }
+
+    #playBtn:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="heart">❤️</div>
+  <h1>亲爱的媛媛，28岁生日快乐！</h1>
+  <p>愿你每天都被温柔以待，笑容常在，幸福满满。<br>
+     有你在的每一天，都是我最珍贵的礼物。</p>
+
+  <!-- 音频元素（默认不显示，不自动播放） -->
+  <audio id="bgMusic" src="yellow.mp3"></audio>
+
+  <!-- 播放按钮 -->
+  <button id="playBtn">🎵 播放《Yellow》</button>
+
+  <footer>—— 永远爱你的哥哥 💖</footer>
+
+  <script>
+    const audio = document.getElementById('bgMusic');
+    const btn = document.getElementById('playBtn');
+
+    btn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play().then(() => {
+          btn.textContent = '⏸ 暂停音乐';
+        }).catch(e => {
+          alert('无法播放音乐，请检查音频文件是否在同目录下，或尝试手动播放。');
+        });
+      } else {
+        audio.pause();
+        btn.textContent = '🎵 播放《Yellow》';
+      }
+    });
+
+    // 可选：音乐播放完后自动重播
+    audio.loop = true;
+  </script>
+</body>
+</html>
+
+
